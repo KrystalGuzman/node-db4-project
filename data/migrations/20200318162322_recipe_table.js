@@ -1,21 +1,21 @@
 exports.up = function(knex) {
     return knex.schema
-      .createTable("recipes", table => {
-          table.increments();
+      .createTable("recipes", tbl => {
+        tbl.increments();
   
-          table.string("title", 128)
+        tbl.string("title", 128)
               .notNullable();
       })
-      .createTable("ingredients", table => {
-          table.increments();
+      .createTable("ingredients", tbl => {
+        tbl.increments();
   
-          table.string("name", 128)
+        tbl.string("name", 128)
               .notNullable();
       })
-      .createTable("recipe_ingredients", table => {
-          table.increments();
+      .createTable("recipe_ingredients", tbl => {
+        tbl.increments();
   
-          table.integer("recipe_id")
+        tbl.integer("recipe_id")
               .unsigned()
               .notNullable()
               .references("id")
@@ -23,7 +23,7 @@ exports.up = function(knex) {
               .onUpdate("CASCADE")
               .onDelete("RESTRICT");
   
-          table.integer("ingredient_id")
+              tbl.integer("ingredient_id")
               .unsigned()
               .notNullable()
               .references("id")
@@ -31,15 +31,15 @@ exports.up = function(knex) {
               .onUpdate("CASCADE")
               .onDelete("RESTRICT");
           
-          table.float("quantity")
+              tbl.float("quantity")
           
-          table.string("unit", 32)
+              tbl.string("unit", 32)
               
       })
-      .createTable("recipe_steps", table => {
-          table.increments();
+      .createTable("recipe_steps", tbl => {
+        tbl.increments();
   
-          table.integer("recipe_id")
+        tbl.integer("recipe_id")
               .unsigned()
               .notNullable()
               .references("id")
@@ -47,11 +47,11 @@ exports.up = function(knex) {
               .onUpdate("CASCADE")
               .onDelete("RESTRICT");
           
-          table.integer("step")
+        tbl.integer("step")
               .unsigned()
               .notNullable();
           
-          table.string("instructions")
+        tbl.string("instructions")
               
       })
   };
