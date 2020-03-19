@@ -8,7 +8,7 @@ exports.seed = async function(knex) {
     
   ];
   // Deletes (truncate) ALL existing entries and reset id back to 1
-  await knex('ingredients').truncate()
+  // await knex('ingredients').truncate()
 
   return knex('ingredients').insert(testData);
 };
