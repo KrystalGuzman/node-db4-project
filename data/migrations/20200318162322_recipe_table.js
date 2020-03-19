@@ -35,7 +35,6 @@ exports.up = function(knex) {
           
           table.string("unit", 32)
               
-          // table.unique(["recipe_id", "ingredient_id"]);
       })
       .createTable("recipe_steps", table => {
           table.increments();
